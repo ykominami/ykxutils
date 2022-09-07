@@ -12,4 +12,7 @@ gem "rspec", "~> 3.0"
 gem "rubocop", "~> 1.7"
 gem "rubocop-rake", require: false
 gem "rubocop-rspec", require: false
-gem "yard"
+
+group :development do
+  gem "yard"
+end
