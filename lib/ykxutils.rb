@@ -2,6 +2,7 @@
 
 require_relative "ykxutils/version"
 require_relative "ykxutils/yamlx"
+require_relative "ykxutils/pstorex"
 
 module Ykxutils
   class Error < StandardError; end

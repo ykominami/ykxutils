@@ -2,6 +2,7 @@
 
 require "ykxutils"
 require "pathname"
+require "fileutils"
 
 module Ykxutils
   TEST_DATA_DIR = Pathname.new(__dir__).join("../test_data")
