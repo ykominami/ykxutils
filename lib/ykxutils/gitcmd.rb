@@ -6,6 +6,7 @@ module Ykxutils
   def func_git_log(target_line)
     line_no = 1
     buf = []
+    buf_error = []
     prog = "git log --oneline"
     _stdin, stdout, stderr = Open3.popen3(prog)
     stdout.each do |line|
@@ -15,20 +16,20 @@ module Ykxutils
       line_no += 1
     end
     stderr.each do |line_e|
-      puts line_e
+      buf_error << line_e
     end
 
-    buf
+    [buf, buf_error]
   end
 
   def func_get_commit_id(target)
     commit_id = ""
-    buf = func_git_log(target)
+    buf, buf_error = func_git_log(target)
+    puts buf_error
     index = target - 1
     str = buf[index]
-    if str
-      commit_id = str.split.first
-    end
+    commit_id = str.split.first if str
+
     commit_id
   end
 
