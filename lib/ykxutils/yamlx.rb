@@ -9,14 +9,14 @@ module Ykxutils
     begin
       setting = YAML.load_file(yaml_file_path, aliases: true)
       valid = true
-    rescue ArgumentError => e
+    rescue ArgumentError
       # p "yaml_load_file_compat 1"
       # p ex.class
       # p ex.inspect
       # p ex.message
       # p ex.backtrace
       # exit#
-    rescue StandardError => e
+    rescue StandardError
       # p "yaml_load_file_compat 1-2"
       # p ex.class
       # p ex.inspect
@@ -27,7 +27,7 @@ module Ykxutils
     if valid != true
       begin
         setting = YAML.load_file(yaml_file_path)
-        valid = true
+        # valid = true
       rescue ArgumentError
         # p "yaml_load_file_compat 2"
         # p ex.class
@@ -35,7 +35,7 @@ module Ykxutils
         # p ex.message
         # p ex.backtrace
         #
-      rescue StandardError => e
+      rescue StandardError
         # p "yaml_load_file_compat 2-2"
         # p ex.class
         # p ex.inspect

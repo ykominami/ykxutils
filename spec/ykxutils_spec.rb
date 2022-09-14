@@ -12,6 +12,12 @@ RSpec.describe Ykxutils do
       setting = described_class.yaml_load_file_compati(test_file_path)
       expect(setting).not_to be_nil
     end
+
+    it "func_get_files_from_commit", cmd: :gitcmd do
+      target = 3
+      files = described_class.func_get_files_from_commit(target)
+      expect(files.instance_of?(Array)).to be(true)
+    end
   end
 
   describe "Pstorex" do
