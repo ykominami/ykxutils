@@ -12,5 +12,9 @@ jobs:
       with:
         ruby-version: 3.0.0
         bundler-cache: true
+    - name: git diff-tree
+      run: git diff-tree --name-only --format="" @{0}
+    - name: git ls-files
+      run: git ls-files
     - name: Run the default task
       run: bundle exec rake

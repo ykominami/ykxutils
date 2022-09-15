@@ -1,13 +1,15 @@
 require "open3"
 
 module Ykxutils
+  GIT_CMD="/usr/bin/git"
+
   module_function
 
   def func_git_log(target_line)
     line_no = 1
     buf = []
     buf_error = []
-    prog = "git log --oneline"
+    prog = "#{GIT_CMD} log --oneline"
     _stdin, stdout, stderr = Open3.popen3(prog)
     stdout.each do |line|
       buf << line
@@ -28,7 +30,8 @@ module Ykxutils
     puts buf_error
     index = target - 1
     str = buf[index]
-    commit_id = str.split.first if str
+    #commit_id = str.split.first if str
+    commit_id = str.split.first
 
     commit_id
   end
@@ -37,7 +40,7 @@ module Ykxutils
     buf = []
     return buf if commit_id == ""
 
-    prog = "git diff-tree --name-status -r #{commit_id}"
+    prog = "#{GIT_CMD} diff-tree --name-status -r #{commit_id}"
     _stdin, stdout, _stderr = Open3.popen3(prog)
     stdout.each do |line|
       buf << line
