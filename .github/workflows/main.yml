@@ -1,20 +1,20 @@
 name: Ruby
 
-on: [push,pull_request]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: 3.0.0
-        bundler-cache: true
-    - name: git diff-tree
-      run: git diff-tree --name-only --format="" @{0}
-    - name: git ls-files
-      run: git ls-files
-    - name: Run the default task
-      run: bundle exec rake
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
+          bundler-cache: true
+      - name: git diff-tree
+        run: ./bin/git_diff_tree.sh
+      - name: git ls-files
+        run: git ls-files
+      - name: Run the default task
+        run: bundle exec rake
