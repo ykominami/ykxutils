@@ -14,7 +14,7 @@ jobs:
           bundler-cache: true
       - name: git diff-tree
         run: |
-          ./bin/git_diff_tree.sh 5
+          ./bin/git_diff_tree.sh
       - name: git ls-files
         run: |
           git ls-files
