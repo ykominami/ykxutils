@@ -21,5 +21,11 @@ module Ykxutils
         @store_db[key] = value
       end
     end
+
+    def delete(key)
+      @store_db.transaction do
+        @store_db.delete(key)
+      end
+    end
   end
 end
