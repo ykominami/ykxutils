@@ -42,5 +42,17 @@ RSpec.describe Ykxutils do
       value2 = pstorex.fetch(key, default_value)
       expect(value2).to eq(value)
     end
+
+    it "delete", cmd: :delete do
+      value = [1, 2, 3]
+      default_value = []
+      key = :TOP2
+      value1 = pstorex.store(key, value)
+
+      pstorex.delete(key)
+      value3 = pstorex.fetch(key, default_value)
+      puts value3
+      expect(value3).to eq([])
+    end
   end
 end
