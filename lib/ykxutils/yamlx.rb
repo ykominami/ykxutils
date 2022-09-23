@@ -45,4 +45,24 @@ module Ykxutils
     end
     setting
   end
+
+  def yaml_load_compati(content)
+    setting = {}
+    valid = false
+    begin
+      setting = YAML.load(content, aliases: true)
+      valid = true
+    rescue ArgumentError
+    rescue StandardError
+    end
+
+    if valid != true
+      begin
+        setting = YAML.load(content)
+      rescue ArgumentError
+      rescue StandardError
+      end
+    end
+    setting
+  end
 end

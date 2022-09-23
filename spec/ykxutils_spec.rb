@@ -4,6 +4,8 @@ RSpec.describe Ykxutils do
   let(:test_file_path) { Ykxutils::TEST_DATA_DIR.join("test.yaml") }
 
   describe "Yamlx" do
+    let( :content ) { %! klass: Xenop ! }
+
     it "has a version number" do
       expect(Ykxutils::VERSION).not_to be_nil
     end
@@ -17,6 +19,11 @@ RSpec.describe Ykxutils do
       target = 3
       files = described_class.func_get_files_from_commit(target)
       expect(files.instance_of?(Array)).to be(true)
+    end
+
+    it "yamlx load yaml" do
+      setting = described_class.yaml_load_compati(content)
+      expect(setting).not_to be_nil
     end
   end
 
