@@ -12,3 +12,5 @@
 /vendor/
 *.code-workspace
 /output/
+.ruby-version
+

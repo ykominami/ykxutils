@@ -7,12 +7,13 @@ gemspec
 
 gem "rake", "~> 13.0"
 
-gem "rspec", "~> 3.0"
-
-gem "rubocop", "~> 1.7"
-gem "rubocop-rake", require: false
-gem "rubocop-rspec", require: false
-
 group :development do
   gem "yard"
+end
+
+group :test, optional: true do
+  gem "rspec", "~> 3.0"
+  gem "rubocop", "~> 1.21"
+  gem "rubocop-rake", require: false
+  gem "rubocop-rspec", require: false
 end

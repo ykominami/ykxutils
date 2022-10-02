@@ -3,66 +3,37 @@ require "yaml"
 module Ykxutils
   module_function
 
-  def yaml_load_file_compati(yaml_file_path)
-    setting = {}
-    valid = false
-    begin
-      setting = YAML.load_file(yaml_file_path, aliases: true)
-      valid = true
-    rescue ArgumentError
-      # p "yaml_load_file_compat 1"
-      # p ex.class
-      # p ex.inspect
-      # p ex.message
-      # p ex.backtrace
-      # exit#
-    rescue StandardError
-      # p "yaml_load_file_compat 1-2"
-      # p ex.class
-      # p ex.inspect
-      # p ex.message
-      # p ex.backtrace
-    end
+  def yaml_load_file_aliases(yaml_file_path, use_aliases: true)
+    use_aliases ? YAML.load_file(yaml_file_path, aliases: true) : YAML.load_file(yaml_file_path)
+    value = 0
+  rescue ArgumentError => e
+    # puts e.message
+    value = 1
+  rescue StandardError => e
+    # puts e.message
+    value = 2
+  end
 
-    if valid != true
-      begin
-        setting = YAML.load_file(yaml_file_path)
-        # valid = true
-      rescue ArgumentError
-        # p "yaml_load_file_compat 2"
-        # p ex.class
-        # p ex.inspect
-        # p ex.message
-        # p ex.backtrace
-        #
-      rescue StandardError
-        # p "yaml_load_file_compat 2-2"
-        # p ex.class
-        # p ex.inspect
-        # p ex.message
-        # p ex.backtrace
-      end
-    end
+  def yaml_load_file_compati(yaml_file_path)
+    setting = yaml_load_file_aliases(yaml_file_path, use_aliases: true)
+    setting = yaml_load_file_aliases(yaml_file_path, use_aliases: false) if setting.nil?
     setting
   end
 
-  def yaml_load_compati(content)
-    setting = {}
-    valid = false
-    begin
-      setting = YAML.load(content, aliases: true)
-      valid = true
-    rescue ArgumentError
-    rescue StandardError
-    end
+  def yaml_load_aliases(content, use_aliases: true)
+    use_aliases ? YAML.safe_load(content, aliases: true) : YAML.safe_load(content)
+    value = 0
+  rescue ArgumentError => e
+    # puts e.message
+    value = 1
+  rescue StandardError => e
+    # puts e.message
+    value = 2
+  end
 
-    if valid != true
-      begin
-        setting = YAML.load(content)
-      rescue ArgumentError
-      rescue StandardError
-      end
-    end
+  def yaml_load_compati(content)
+    setting = yaml_load_aliases(content, use_aliases: true)
+    setting = yaml_load_aliases(content, use_aliases: false) if setting.nil?
     setting
   end
 end

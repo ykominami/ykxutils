@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 RSpec.describe Ykxutils do
-  let(:test_file_path) { Ykxutils::TEST_DATA_DIR.join("test.yaml") }
+  let(:test_file_path) { ::Ykxutils::TEST_DATA_DIR.join("test.yaml") }
 
   describe "Yamlx" do
-    let( :content ) { %! klass: Xenop ! }
+    let(:content) { %( klass: Xenop ) }
 
     it "has a version number" do
-      expect(Ykxutils::VERSION).not_to be_nil
+      expect(::Ykxutils::VERSION).not_to be_nil
     end
 
     it "yamlx load yaml file" do
@@ -30,7 +30,7 @@ RSpec.describe Ykxutils do
   describe "Pstorex" do
     let(:output_dir) { "output" }
     let(:store_fname) { "pstore.dump" }
-    let(:pstorex) { Ykxutils::Pstorex.new(output_dir, store_fname) }
+    let(:pstorex) { ::Ykxutils::Pstorex.new(output_dir, store_fname) }
     let(:key) { :top }
 
     it "fetch", cmd: :fetch do
@@ -42,23 +42,17 @@ RSpec.describe Ykxutils do
     end
 
     it "store", cmd: :store do
-      value = [1, 2, 3]
-      default_value = []
-      pstorex.store(key, value)
+      value, default_value = TestConf.setup(key, pstorex)
 
       value2 = pstorex.fetch(key, default_value)
       expect(value2).to eq(value)
     end
 
     it "delete", cmd: :delete do
-      value = [1, 2, 3]
-      default_value = []
       key = :TOP2
-      value1 = pstorex.store(key, value)
-
+      _value, default_value = ::TestConf.setup(key, pstorex)
       pstorex.delete(key)
       value3 = pstorex.fetch(key, default_value)
-      puts value3
       expect(value3).to eq([])
     end
   end

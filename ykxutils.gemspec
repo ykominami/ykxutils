@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = "New version of utilty function created by yk."
   spec.homepage      = "https://ykominami.github.io/ykxutils"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.6")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7")
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
