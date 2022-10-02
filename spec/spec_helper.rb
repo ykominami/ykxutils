@@ -19,3 +19,12 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+class TestConf
+  def self.setup(key, pstorex)
+    value = [1, 2, 3]
+    default_value = []
+    pstorex.store(key, value)
+    [value, default_value]
+  end
+end
