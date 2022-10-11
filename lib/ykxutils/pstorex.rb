@@ -3,7 +3,7 @@ require "fileutils"
 
 module Ykxutils
   class Pstorex
-    def initialize(store_dir, dump_file="pstore.dump")
+    def initialize(store_dir, dump_file = "pstore.dump")
       FileUtils.mkdir_p(store_dir)
       @store_db = PStore.new(Pathname.new(store_dir).join(dump_file))
     end
