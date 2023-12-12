@@ -11,7 +11,7 @@ module Ykxutils
       # puts e.message
       value = 1
     rescue StandardError
-      # puts e.message
+      # puts e.message8
       value = 2
     end
     value
@@ -24,8 +24,9 @@ module Ykxutils
   end
 
   def yaml_load_aliases(content, use_aliases: true)
+  	content = nil
     begin
-      use_aliases ? YAML.safe_load(content, aliases: true) : YAML.safe_load(content)
+      content = use_aliases ? YAML.safe_load(content, aliases: true) : YAML.safe_load(content)
       value = 0
     rescue ArgumentError
       # puts e.message
@@ -34,12 +35,12 @@ module Ykxutils
       # puts e.message
       value = 2
     end
-    value
+    [content, value]
   end
 
   def yaml_load_compati(content)
-    setting = yaml_load_aliases(content, use_aliases: true)
-    setting = yaml_load_aliases(content, use_aliases: false) if setting.nil?
-    setting
+    ret_array = yaml_load_aliases(content, use_aliases: true)
+    ret_array = yaml_load_aliases(content, use_aliases: false) if ret_array[1] != 0
+    ret_array[0]
   end
 end
