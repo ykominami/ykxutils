@@ -24,18 +24,18 @@ module Ykxutils
   end
 
   def yaml_load_aliases(content, use_aliases: true)
-    content = nil
+    converted = nil
     begin
-      content = use_aliases ? YAML.safe_load(content, use_aliases) : YAML.safe_load(content)
-      value = 0
+      converted = use_aliases ? YAML.safe_load(content, use_aliases) : YAML.safe_load(content)
+      result = 0
     rescue ArgumentError
       # puts e.message
-      value = 1
+      result = 1
     rescue StandardError
       # puts e.message
-      value = 2
+      result = 2
     end
-    [content, value]
+    [converted, result]
   end
 
   def yaml_load_compati(content)
