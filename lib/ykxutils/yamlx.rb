@@ -24,9 +24,9 @@ module Ykxutils
   end
 
   def yaml_load_aliases(content, use_aliases: true)
-  	content = nil
+    content = nil
     begin
-      content = use_aliases ? YAML.safe_load(content, aliases: true) : YAML.safe_load(content)
+      content = use_aliases ? YAML.safe_load(content, use_aliases) : YAML.safe_load(content)
       value = 0
     rescue ArgumentError
       # puts e.message
