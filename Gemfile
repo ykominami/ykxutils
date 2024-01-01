@@ -7,7 +7,7 @@ gemspec
 
 gem "bundler"
 gem "erubi"
-gem "rake", "~> 13.0"
+gem "rake", "~> 13.1"
 gem "tilt"
 
 group :development do
