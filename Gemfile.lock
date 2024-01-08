@@ -21,7 +21,7 @@ GEM
       racc
     racc (1.7.3)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     regexp_parser (2.8.3)
     rexml (3.2.6)
     rspec (3.12.0)
@@ -50,13 +50,9 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-capybara (2.19.0)
-      rubocop (~> 1.41)
-    rubocop-factory_bot (2.24.0)
-      rubocop (~> 1.33)
-    rubocop-performance (1.19.1)
-      rubocop (>= 1.7.0, < 2.0)
-      rubocop-ast (>= 0.4.0)
+    rubocop-performance (1.20.1)
+      rubocop (>= 1.48.1, < 2.0)
+      rubocop-ast (>= 1.30.0, < 2.0)
     rubocop-rake (0.6.0)
       rubocop (~> 1.0)
     rubocop-rspec (2.25.0)
@@ -66,9 +62,7 @@ GEM
     ruby-progressbar (1.13.0)
     tilt (2.0.11)
     unicode-display_width (2.5.0)
-    webrick (1.7.0)
-    yard (0.9.28)
-      webrick (~> 1.7.0)
+    yard (0.9.34)
 
 PLATFORMS
   x86_64-linux
@@ -76,7 +70,7 @@ PLATFORMS
 DEPENDENCIES
   bundler
   erubi
-  rake (~> 13.0)
+  rake (~> 13.1)
   rspec (~> 3.12)
   rubocop
   rubocop-performance
