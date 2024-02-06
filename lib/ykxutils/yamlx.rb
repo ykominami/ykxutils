@@ -1,20 +1,25 @@
 require "yaml"
 
 module Ykxutils
+  SUCCESS = 0
+  ARGUMENT_ERROR = 1
+  STANDARD_ERROR = 2
+  
   module_function
 
   def yaml_load_file_aliases(yaml_file_path, use_aliases: true)
+    converted = nil
     begin
-      use_aliases ? YAML.load_file(yaml_file_path, aliases: true) : YAML.load_file(yaml_file_path)
-      value = 0
+      converted = use_aliases ? YAML.load_file(yaml_file_path, aliases: true) : YAML.load_file(yaml_file_path)
+      value = SUCCESS
     rescue ArgumentError
       # puts e.message
-      value = 1
+      value = ARGUMENT_ERROR
     rescue StandardError
       # puts e.message8
-      value = 2
+      value = STANDARD_ERROR
     end
-    value
+    [converted, value]
   end
 
   def yaml_load_file_compati(yaml_file_path)
@@ -27,13 +32,13 @@ module Ykxutils
     converted = nil
     begin
       converted = use_aliases ? YAML.safe_load(content, use_aliases) : YAML.safe_load(content)
-      result = 0
+      result = SUCCESS
     rescue ArgumentError
       # puts e.message
-      result = 1
+      result = ARGUMENT_ERROR
     rescue StandardError
       # puts e.message
-      result = 2
+      result = STANDARD_ERROR
     end
     [converted, result]
   end
