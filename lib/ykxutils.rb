@@ -11,5 +11,6 @@ require_relative "ykxutils/gridlist"
 
 module Ykxutils
   class Error < StandardError; end
+
   # Your code goes here...
 end
