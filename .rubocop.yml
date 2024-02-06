@@ -27,3 +27,12 @@ Layout/LineLength:
 
 Style/Documentation:
   Enabled: false
+
+#追加
+#
+Style/StringConcatenation:
+  Enabled: false
+#
+Naming/AccessorMethodName:
+  Enabled: false
+

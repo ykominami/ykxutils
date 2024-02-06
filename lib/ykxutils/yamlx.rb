@@ -4,7 +4,7 @@ module Ykxutils
   SUCCESS = 0
   ARGUMENT_ERROR = 1
   STANDARD_ERROR = 2
-  
+
   module_function
 
   def yaml_load_file_aliases(yaml_file_path, use_aliases: true)
