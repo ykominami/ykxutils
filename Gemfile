@@ -16,7 +16,7 @@ group :development do
 end
 
 group :test do
-  gem "rspec", "~> 3.12"
+  gem "rspec", "~> 3.13"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rake", require: false
