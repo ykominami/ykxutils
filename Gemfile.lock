@@ -1,7 +1,9 @@
 PATH
   remote: .
   specs:
-    ykxutils (0.1.11)
+    ykxutils (0.1.12)
+      erubi
+      tilt
 
 GEM
   remote: https://rubygems.org/
