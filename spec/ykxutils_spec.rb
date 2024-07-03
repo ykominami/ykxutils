@@ -29,7 +29,7 @@ RSpec.describe Ykxutils do
   end
 
   describe "Erubyx" do
-    let(:base_dir) { "v103-3-189-127" }
+    let(:base_dir_pn) { Pathname.new("test_data/v103-3-189-127") }
 
     it "make_grid_list", :version do
       expect(Ykxutils::VERSION).not_to be_nil
@@ -51,7 +51,7 @@ RSpec.describe Ykxutils do
       ncf = Ykxutils::Nginxconfigfiles.new
       re = /base.yml$/
       dir = "a.northern-cross.net"
-      start_dir = make_path_complement(dir)
+      start_dir = make_path_complement(dir).to_s
       file_list = ncf.get_file_list(start_dir, re)
       ncf.output(file_list)
 
@@ -99,6 +99,56 @@ RSpec.describe Ykxutils do
       pstorex.delete(key)
       value3 = pstorex.fetch(key, default_value)
       expect(value3).to eq([])
+    end
+  end
+
+  describe "Fileop", fileop: true do
+    describe "make_output_path" do
+      context "input file only" do
+        it "input file is in current directory" do
+          value = "a.txt"
+          value2 = Ykxutils::make_output_path(input_path: value)
+          expect(value2).to eq(nil)
+        end
+      end
+      context "input file and output dir" do
+        it "output_dir is data" do
+          value_input = "a.txt"
+          value_out_dir = "data"
+          # value_output = "data/a.txt"
+          value_output = nil
+          value2 = Ykxutils::make_output_path(input_path: "data/a.txt", out_dir: value_out_dir)
+          expect(value2).to eq(value_output)
+        end
+        it "output_dir is :SAME" do
+          value_output = "data/o_a.txt"
+          value_input = "data/a.txt"
+          value_out_dir = :SAME
+          value_prefix = "o_"
+          value2 = Ykxutils::make_output_path(input_path: "data/a.txt", out_dir: value_out_dir, prefix: value_prefix)
+          expect(value2).to eq(value_output)
+        end
+      end
+    end
+    describe "file_convert", file_convert: true do
+      context "infile and outfile" do
+        it "dt tag" do
+          test_data_dir = "test_data/fileop"
+          test_data_pn = Pathname.new(test_data_dir)
+          infilename = test_data_pn + "in.html"
+          outfilename = test_data_pn + "out.html"
+          infile = File.open(infilename)
+          outfile = File.open(outfilename, "w")
+          Ykxutils::file_convert(infile, outfile) { |infile, outfile|
+            while line = infile.gets
+              line.chomp!
+              oline = Ykxutils.complemente_dt_tag(line)
+              outfile.write(oline + "\n")
+            end
+            expect(true).to be_truthy
+          }
+        end
+      end
     end
   end
 end

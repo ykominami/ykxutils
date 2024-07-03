@@ -8,6 +8,8 @@ require_relative "ykxutils/gitcmd"
 require_relative "ykxutils/nginxconfig"
 require_relative "ykxutils/nginxconfigfiles"
 require_relative "ykxutils/gridlist"
+require_relative "ykxutils/fileop"
+require_relative "ykxutils/htmlparsex"
 
 module Ykxutils
   class Error < StandardError; end
