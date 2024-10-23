@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Ykxutils do
+  let(:test_dir_pn) { Pathname.new(Ykxutils::TEST_DATA_DIR) }
   let(:test_file_path) { Ykxutils::TEST_DATA_DIR.join("test.yaml") }
 
   describe "Yamlx" do
@@ -43,7 +44,7 @@ RSpec.describe Ykxutils do
     end
 
     def make_path_complement(path)
-      base_dir_pn + path
+       (test_dir_pn + base_dir + path).to_s
     end
 
     it "Ykxutils::Nginxconfigfiles", :nginx do
