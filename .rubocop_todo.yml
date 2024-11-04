@@ -14,14 +14,6 @@
 Layout/SpaceBeforeBlockBraces:
   Exclude:
     # - 'spec/ykxutils_spec.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
     # - 'lib/ykxutils/htmlparsex.rb'
 
 # Offense count: 3
@@ -32,6 +24,19 @@ Layout/SpaceInsideParens:
   Exclude:
     #- 'lib/ykxutils/fileop.rb'
     #- 'lib/ykxutils/htmlparsex.rb'
+
+# Offense count: 4
+Lint/ShadowingOuterLocalVariable:
+  Exclude:
+    #- 'lib/ykxutils/htmlparsex.rb'
+    #- 'spec/ykxutils_spec.rb'
+
+# Offense count: 2
+# This cop supports unsafe autocorrection (--autocorrect-all).
+# Configuration parameters: AutoCorrect.
+Lint/UselessAssignment:
+  Exclude:
+    #- 'spec/ykxutils_spec.rb'
 
 # Offense count: 3
 # This cop supports safe autocorrection (--autocorrect).
@@ -46,78 +51,6 @@ Layout/TrailingWhitespace:
 Lint/AssignmentInCondition:
   Exclude:
     #- 'lib/ykxutils/htmlparsex.rb'
-    #- 'spec/ykxutils_spec.rb'
-
-# Offense count: 4
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    #- 'lib/ykxutils/htmlparsex.rb'
-    #- 'spec/ykxutils_spec.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AutoCorrect.
-Lint/UselessAssignment:
-  Exclude:
-    #- 'spec/ykxutils_spec.rb'
-
-# Offense count: 4
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    - 'lib/ykxutils/htmlparsex.rb'
-    - 'spec/ykxutils_spec.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AutoCorrect.
-Lint/UselessAssignment:
-  Exclude:
-    # - 'spec/ykxutils_spec.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, EnforcedStyleForEmptyBraces.
-# SupportedStyles: space, no_space
-# SupportedStylesForEmptyBraces: space, no_space
-Layout/SpaceBeforeBlockBraces:
-  Exclude:
-    # - 'lib/ykxutils/htmlparsex.rb'
-
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: space, compact, no_space
-Layout/SpaceInsideParens:
-  Exclude:
-    #- 'lib/ykxutils/fileop.rb'
-    #- 'lib/ykxutils/htmlparsex.rb'
-
-# Offense count: 3
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
-    #- 'lib/ykxutils/htmlparsex.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AllowSafeAssignment.
-Lint/AssignmentInCondition:
-  Exclude:
-    #- 'lib/ykxutils/htmlparsex.rb'
-    #- 'spec/ykxutils_spec.rb'
-
-# Offense count: 4
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    #- 'lib/ykxutils/htmlparsex.rb'
-    #- 'spec/ykxutils_spec.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AutoCorrect.
-Lint/UselessAssignment:
-  Exclude:
     #- 'spec/ykxutils_spec.rb'
 
 # Offense count: 1

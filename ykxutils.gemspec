@@ -33,9 +33,9 @@ Gem::Specification.new do |spec|
 
   # spec.add_runtime_dependency "bundler"
   # spec.add_runtime_dependency 'debug'
-  spec.add_runtime_dependency "erubi"
+  spec.add_dependency "erubi"
   # spec.add_runtime_dependency "rake", "~> 13.0"
-  spec.add_runtime_dependency "tilt"
+  spec.add_dependency "tilt"
 
   # spec.add_development_dependency "rspec", "~> 3.0"
   # spec.add_development_dependency "rubocop"
