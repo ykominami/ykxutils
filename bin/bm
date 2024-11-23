@@ -1,0 +1,15 @@
+require "bundler/setup"
+require "ykxutils"
+
+infile = ARGV[0]
+outfile = ARGV[1]
+bm = Ykxutils::Bookmark.new(infile: infile, outfile: outfile)
+bm.parse
+array = bm.to_array_2d
+# pp array
+# exit
+
+#bm.dump_tree
+xlsx = Ykxutils::Xlsx.new(output_file:  outfile)
+
+xlsx.array_to_xlsx(array)

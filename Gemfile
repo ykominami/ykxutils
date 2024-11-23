@@ -9,13 +9,15 @@ gem "bundler"
 gem "erubi"
 gem "rake", "~> 13.2"
 gem "tilt"
+gem "rubyXL"
 
 group :development do
+  gem "loggerx"
   gem "debug"
   gem "yard"
 end
 
-group :test do
+group :development, :test do
   gem "rspec", "~> 3.13"
   gem "rubocop"
   gem "rubocop-performance"

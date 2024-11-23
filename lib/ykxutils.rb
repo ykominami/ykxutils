@@ -10,6 +10,8 @@ require_relative "ykxutils/nginxconfigfiles"
 require_relative "ykxutils/gridlist"
 require_relative "ykxutils/fileop"
 require_relative "ykxutils/htmlparsex"
+require_relative "ykxutils/bookmark"
+require_relative "ykxutils/xlsx"
 
 module Ykxutils
   class Error < StandardError; end

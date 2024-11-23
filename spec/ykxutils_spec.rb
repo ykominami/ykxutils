@@ -44,7 +44,7 @@ RSpec.describe Ykxutils do
     end
 
     def make_path_complement(path)
-      (test_dir_pn + base_dir_pn + path).to_s
+       (test_dir_pn + base_dir_pn + path).to_s
     end
 
     it "Ykxutils::Nginxconfigfiles", :nginx do
