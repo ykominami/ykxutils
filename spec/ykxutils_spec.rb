@@ -29,7 +29,7 @@ RSpec.describe Ykxutils do
   end
 
   describe "Erubyx" do
-    let(:base_dir_pn) { Pathname.new(v103-3-189-127") }
+    let(:base_dir_pn) { Pathname.new("v103-3-189-127") }
 
     it "make_grid_list", :version do
       expect(Ykxutils::VERSION).not_to be_nil
@@ -44,13 +44,7 @@ RSpec.describe Ykxutils do
     end
 
     def make_path_complement(path)
-<<<<<<< HEAD
        (test_dir_pn + base_dir_pn + path).to_s
-||||||| 6d084fa
-       (test_dir_pn + base_dir + path).to_s
-=======
-      (test_dir_pn + base_dir_pn + path).to_s
->>>>>>> 7309a5220dad5a70dae43d42f8d8d3441b8464e1
     end
 
     it "Ykxutils::Nginxconfigfiles", :nginx do
