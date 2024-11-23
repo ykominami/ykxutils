@@ -15,7 +15,7 @@ module Ykxutils
 
       line_no += 1
     end
-    stderr.each do |line_e|
+    stderr.map do |line_e|
       buf_error << line_e
     end
 

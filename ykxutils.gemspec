@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = "New version of utilty function created by yk."
   spec.homepage = "https://ykominami.github.io/ykxutils"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.7"
+  spec.required_ruby_version = ">= 3.0"
 
   # spec.metadata["allowed_push_host"] = "TODO: Set to your gem server 'https://example.com'"
 
@@ -33,9 +33,9 @@ Gem::Specification.new do |spec|
 
   # spec.add_runtime_dependency "bundler"
   # spec.add_runtime_dependency 'debug'
-  spec.add_runtime_dependency "erubi"
+  spec.add_dependency "erubi"
   # spec.add_runtime_dependency "rake", "~> 13.0"
-  spec.add_runtime_dependency "tilt"
+  spec.add_dependency "tilt"
 
   # spec.add_development_dependency "rspec", "~> 3.0"
   # spec.add_development_dependency "rubocop"

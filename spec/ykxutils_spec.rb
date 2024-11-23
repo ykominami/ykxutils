@@ -44,7 +44,13 @@ RSpec.describe Ykxutils do
     end
 
     def make_path_complement(path)
+<<<<<<< HEAD
        (test_dir_pn + base_dir_pn + path).to_s
+||||||| 6d084fa
+       (test_dir_pn + base_dir + path).to_s
+=======
+      (test_dir_pn + base_dir_pn + path).to_s
+>>>>>>> 7309a5220dad5a70dae43d42f8d8d3441b8464e1
     end
 
     it "Ykxutils::Nginxconfigfiles", :nginx do
@@ -102,36 +108,35 @@ RSpec.describe Ykxutils do
     end
   end
 
-  describe "Fileop", fileop: true do
+  describe "Fileop", :fileop do
     describe "make_output_path" do
-      context "input file only" do
+      context "when input file only" do
         it "input file is in current directory" do
           value = "a.txt"
-          value2 = Ykxutils::make_output_path(input_path: value)
-          expect(value2).to eq(nil)
+          value2 = described_class.make_output_path(input_path: value)
+          expect(value2).to be_nil
         end
       end
-      context "input file and output dir" do
+      context "when input file and output dir" do
         it "output_dir is data" do
-          value_input = "a.txt"
           value_out_dir = "data"
           # value_output = "data/a.txt"
           value_output = nil
-          value2 = Ykxutils::make_output_path(input_path: "data/a.txt", out_dir: value_out_dir)
+          value2 = described_class.make_output_path(input_path: "data/a.txt", out_dir: value_out_dir)
           expect(value2).to eq(value_output)
         end
         it "output_dir is :SAME" do
           value_output = "data/o_a.txt"
-          value_input = "data/a.txt"
           value_out_dir = :SAME
           value_prefix = "o_"
-          value2 = Ykxutils::make_output_path(input_path: "data/a.txt", out_dir: value_out_dir, prefix: value_prefix)
+          value2 = described_class.make_output_path(input_path: "data/a.txt", out_dir: value_out_dir,
+                                                    prefix: value_prefix)
           expect(value2).to eq(value_output)
         end
       end
     end
-    describe "file_convert", file_convert: true do
-      context "infile and outfile" do
+    describe "when file_convert", :file_convert do
+      context "when infile and outfile" do
         it "dt tag" do
           test_data_dir = "test_data/fileop"
           test_data_pn = Pathname.new(test_data_dir)
@@ -139,14 +144,14 @@ RSpec.describe Ykxutils do
           outfilename = test_data_pn + "out.html"
           infile = File.open(infilename)
           outfile = File.open(outfilename, "w")
-          Ykxutils::file_convert(infile, outfile) { |infile, outfile|
-            while line = infile.gets
+          described_class.file_convert(infile, outfile) do |infile2, outfile2|
+            while (line = infile2.gets)
               line.chomp!
-              oline = Ykxutils.complemente_dt_tag(line)
-              outfile.write(oline + "\n")
+              oline = described_class.complemente_dt_tag(line)
+              outfile2.write(oline + "\n")
             end
             expect(true).to be_truthy
-          }
+          end
         end
       end
     end
